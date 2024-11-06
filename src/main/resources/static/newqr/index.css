@@ -1,0 +1,39 @@
+html {
+    font-size: 10px;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    font-family: "Roboto", sans-serif;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.6rem;
+    width: 42rem;
+    gap: 0.8rem;
+    align-items: center;
+}
+
+label {
+    text-align: center;
+}
+
+input {
+    width: 100%;
+}
+
+@media (max-width: 576px) {
+    form {
+        width: 100%;
+    }
+
+    input {
+        width: 85%;
+    }
+}
