@@ -64,15 +64,17 @@ public class NewQRCodeController {
         final var scale = 12;
         final var border = 2;
         Objects.requireNonNull(qr);
-
+        final var size = (qr.size + border * 2) * scale;
         BufferedImage result = new BufferedImage(
-                (qr.size + border * 2) * scale,
-                (qr.size + border * 2) * scale,
+                size,
+                size,
                 BufferedImage.TYPE_INT_RGB
         );
         for (int y = 0; y < result.getHeight(); y++) {
+            final var yValue = y / scale - border;
             for (int x = 0; x < result.getWidth(); x++) {
-                boolean color = qr.getModule(x / scale - border, y / scale - border);
+                final var xValue = x / scale - border;
+                boolean color = qr.getModule(xValue, yValue);
                 result.setRGB(x, y, color ? darkColor : lightColor);
             }
         }
