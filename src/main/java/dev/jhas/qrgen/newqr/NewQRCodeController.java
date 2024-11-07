@@ -55,7 +55,8 @@ public class NewQRCodeController {
             );
         }
         return ResponseEntity.status(HttpStatus.CREATED).body(
-                new GenerateResponse(Base64.getEncoder().encodeToString(baos.toByteArray()), null));
+                new GenerateResponse(
+                    Base64.getEncoder().encodeToString(baos.toByteArray()), null));
     }
 
     private static BufferedImage toImage(QrCode qr) {
