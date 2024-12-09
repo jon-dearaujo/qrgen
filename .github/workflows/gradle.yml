@@ -2,7 +2,7 @@ name: build & test
 run-name: qrgen is building & testing Java code
 on: [push]
 jobs:
-  check-bats-version:
+  build-and-test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
