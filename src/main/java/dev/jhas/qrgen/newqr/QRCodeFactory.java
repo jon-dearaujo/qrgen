@@ -10,7 +10,7 @@ public class QRCodeFactory {
 
     private Logger logger = LoggerFactory.getLogger(QRCodeFactory.class);
 
-    public buildFor(String content) {
+    public String buildFor(String content) {
         if (content == null) return null;
 
         QrCode qrCode = QrCode.encodeText(content, QrCode.Ecc.MEDIUM);
