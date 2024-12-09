@@ -1,1 +1,2 @@
-## Generate QRCodes using Springboot with Java 21.
+## Generates QRCodes using Springboot with Java 21.
+
