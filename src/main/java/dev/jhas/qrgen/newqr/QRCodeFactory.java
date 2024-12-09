@@ -5,6 +5,9 @@ import java.awt.image.BufferedImage;
 import java.io.*;
 import javax.imageio.ImageIO;
 import java.util.Base64;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import java.util.Objects 
 
 public class QRCodeFactory {
 
@@ -15,7 +18,7 @@ public class QRCodeFactory {
 
         QrCode qrCode = QrCode.encodeText(content, QrCode.Ecc.MEDIUM);
         var image = toImage(qrCode);
-        var baos = ByteArrayOutputStream();
+        var baos = new ByteArrayOutputStream();
         try {
             ImageIO.write(image, "png", baos);
         } catch (IOException e) {
