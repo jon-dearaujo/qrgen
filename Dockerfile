@@ -1,11 +1,11 @@
 # Stage 1: Build the application
-FROM eclipse-temurin:23 AS builder
+FROM eclipse-temurin:21 AS builder
 
 # Install dependencies and Gradle manually
 RUN apt-get update && apt-get install -y wget unzip
 
 # Set the Gradle version as an argument for easy updates
-ARG GRADLE_VERSION=8.2.1
+ARG GRADLE_VERSION=8.4
 RUN wget https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-bin.zip -P /tmp \
     && unzip /tmp/gradle-${GRADLE_VERSION}-bin.zip -d /opt \
     && rm /tmp/gradle-${GRADLE_VERSION}-bin.zip
@@ -29,7 +29,7 @@ COPY src ./src
 RUN gradle bootJar --no-daemon
 
 # Stage 2: Create a minimal production image
-FROM eclipse-temurin:23-jre
+FROM eclipse-temurin:21-jre
 
 # Set environment variables for production
 ENV JAVA_OPTS="-Xms512m -Xmx1024m" \
