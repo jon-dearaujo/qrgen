@@ -18,7 +18,7 @@ public class NewQRCodeController {
 
     private Logger logger = LoggerFactory.getLogger(NewQRCodeController.class);
 
-    @GetMapping("/newqr")
+    @GetMapping("/")
     public String newQrCode() {
         return "newqr";
     }
