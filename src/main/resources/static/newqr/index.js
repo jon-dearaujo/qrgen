@@ -1,5 +1,5 @@
 const INITIAL_BTN_LABEL = 'Generate QR Code';
-const LOADING_BTN_LABEL = 'Generate QR Code';
+const LOADING_BTN_LABEL = 'Generating QR Code...';
 window.addEventListener('load', function () {
     const form = document.querySelector('form');
     form.querySelector('input').value = '';
