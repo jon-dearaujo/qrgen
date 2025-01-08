@@ -1,4 +1,4 @@
 package dev.jhas.qrgen.newqr;
 
-public record GenerateResponse(String content, String error) {
+public record GenerateResponse(String content, String qrName, String error) {
 }

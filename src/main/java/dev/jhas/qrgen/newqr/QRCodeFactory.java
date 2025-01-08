@@ -11,7 +11,7 @@ import java.util.Objects;
 
 public class QRCodeFactory {
 
-    private Logger logger = LoggerFactory.getLogger(QRCodeFactory.class);
+    private final Logger logger = LoggerFactory.getLogger(QRCodeFactory.class);
 
     public String buildFor(String content) {
         if (content == null) return null;
@@ -33,19 +33,19 @@ public class QRCodeFactory {
         final var darkColor = 0x000000;
         final var scale = 12;
         final var border = 2;
-        Objects.requireNonNull(qr);
+        Objects.requireNonNull(qr, "QRCode cannot be null");
         final var size = (qr.size + border * 2) * scale;
         BufferedImage result = new BufferedImage(
-                size,
-                size,
+                size,//width
+                size, //height
                 BufferedImage.TYPE_INT_RGB
         );
         for (int y = 0; y < result.getHeight(); y++) {
             final var yValue = y / scale - border;
             for (int x = 0; x < result.getWidth(); x++) {
                 final var xValue = x / scale - border;
-                boolean color = qr.getModule(xValue, yValue);
-                result.setRGB(x, y, color ? darkColor : lightColor);
+                boolean printColor = qr.getModule(xValue, yValue);
+                result.setRGB(x, y, printColor ? darkColor : lightColor);
             }
         }
         return result;

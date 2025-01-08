@@ -47,7 +47,7 @@ const onFormSubmit = async (event) => {
             body.appendChild(img);
             const downloadLink = document.createElement("a");
             downloadLink.setAttribute("href", imageData);
-            downloadLink.setAttribute("download", "qrcode.png");
+            downloadLink.setAttribute("download", responseData.qrName + ".png");
             downloadLink.innerText = "Download QR Code";
             body.appendChild(downloadLink);
         } else {

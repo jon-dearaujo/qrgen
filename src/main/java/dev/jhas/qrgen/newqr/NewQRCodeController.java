@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class NewQRCodeController {
 
-    private Logger logger = LoggerFactory.getLogger(NewQRCodeController.class);
+    private final Logger logger = LoggerFactory.getLogger(NewQRCodeController.class);
 
     @GetMapping("/")
     public String newQrCode() {
@@ -31,10 +31,12 @@ public class NewQRCodeController {
         logger.info(body.toString());
         if (body.content() == null) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(
-                    new GenerateResponse(null, "Empty content"));
+                    new GenerateResponse(null, null,"Empty content"));
         }
         var image = new QRCodeFactory().buildFor(body.content());
+        var qrName = QRNameBuilder.fromUrlDomain(body.content());
+
         return ResponseEntity.status(HttpStatus.CREATED).body(
-                new GenerateResponse(image, null));
+                new GenerateResponse(image, qrName, null));
     }
 }
