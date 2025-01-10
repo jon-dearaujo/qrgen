@@ -3,6 +3,7 @@ package dev.jhas.qrgen.newqr;
 import org.apache.coyote.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -18,8 +19,12 @@ public class NewQRCodeController {
 
     private final Logger logger = LoggerFactory.getLogger(NewQRCodeController.class);
 
+    @Value("${qrgen.assetsversion}")
+    private String assetsVersion;
+
     @GetMapping("/")
-    public String newQrCode() {
+    public String newQrCode(Model model) {
+        model.addAttribute("assetsVersion", assetsVersion);
         return "newqr";
     }
 
